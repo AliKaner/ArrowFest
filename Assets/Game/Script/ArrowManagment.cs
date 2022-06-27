@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class ArrowManagment : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float minX, maxX;
+    public LayerMask layerMask;
+    public float distance;
+
+    void GetRay()
     {
-        
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.transform.position.z;
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        RaycastHit hit;
+        if (Pysics.Raycast(ray, out hit, 100, layerMask))
+        {
+            Vector3 mouse = hit.point;
+            mouse.x = Math.Clamp(mouse.x, minX, maxX);
+            distance = mouse.x;
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
