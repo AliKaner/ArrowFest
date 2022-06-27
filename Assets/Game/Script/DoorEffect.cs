@@ -15,7 +15,7 @@ public class DoorEffect : MonoBehaviour
     private string _sign;
     public Effect selectedEffect;
     public int effectAmount;
-    public TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI text;
     public Material[] materials;
     
     private void SetStats(Effect effect)

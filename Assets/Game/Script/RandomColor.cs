@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class FinalEnemys : MonoBehaviour
+public class RandomColor : MonoBehaviour
 {
    [SerializeField] private Material[] materials;
    [SerializeField] private GameObject[] Enemys;
