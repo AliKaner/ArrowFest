@@ -21,7 +21,10 @@ public class ArrowManagment : MonoBehaviour
         switch (other.tag)
         {
             case "Door":
-                if(other.gameObject.)
+                if (other.gameObject.isRed == true)
+                {
+                    TODO
+                }
                 break;
             case "Enemy":
                 break;
