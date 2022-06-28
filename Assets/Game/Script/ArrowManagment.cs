@@ -6,11 +6,15 @@ using UnityEngine;
 public class ArrowManagment : MonoBehaviour
 {
     public List<GameObject> arrows = new List<GameObject>();
+    public Queue<GameObject> arrowPool;
+    
     public GameObject arrowObject;
     public Transform parrent;
-    public float minX, maxX;
     public LayerMask layerMask;
+    public float minX, maxX;
     public float distance;
+    
+    private int _maxArrow;
     
     void GetRay()
     {
