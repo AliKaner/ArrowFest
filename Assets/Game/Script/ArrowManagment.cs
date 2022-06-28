@@ -21,9 +21,11 @@ public class ArrowManagment : MonoBehaviour
         switch (other.tag)
         {
             case "Door":
+                
                 DoorEffect doorEffect = other.gameObject.GetComponent<DoorEffect>();
                 var effecType = doorEffect.selectedEffect;
                 var effectAmount = doorEffect.effectAmount;
+                
                 switch (effecType)
                 {
                     case DoorEffect.Effect.Addition:
@@ -39,10 +41,9 @@ public class ArrowManagment : MonoBehaviour
                         AddArrow(arrowCount*(effectAmount-1));
                         break;
                 }
-                
-                
                 break;
             case "Enemy":
+                
                 break;
         }
     }
@@ -73,6 +74,7 @@ public class ArrowManagment : MonoBehaviour
             GameObject arrow = arrows[arrows.Count - 1];
             arrows.RemoveAt(arrows.Count - 1);
             _arrowPool.Enqueue(arrow);
+            arrow.transform.parent = null;
         }
         Sort();
     }
@@ -82,6 +84,7 @@ public class ArrowManagment : MonoBehaviour
         {
             arrowCount += amount;
             GameObject arrow = _arrowPool.Dequeue();
+            arrow.transform.parent = gameObject.transform;
             arrows.Add(arrow);
             arrow.transform.localPosition = Vector3.zero;
         }
