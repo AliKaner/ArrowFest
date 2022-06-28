@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ArrowManagment : MonoBehaviour
@@ -10,11 +8,26 @@ public class ArrowManagment : MonoBehaviour
     public LayerMask layerMask;
     public float minX, maxX;
     public float distance;
-    
     private Queue<GameObject> _arrowPool;
-    [Range(0, 400)] public int arrowCount;
+    public int arrowCount;
+    
+    [SerializeField] private GameObject arrow;
     
     private int _maxArrow;
+
+    void FillPool(int amount, GameObject _arrow)
+    {
+        Transform parent = transform;
+
+        for (int i = 0; i < amount; i++)
+        {
+            _arrowPool.Enqueue(Instantiate(_arrow, parent.position, parent.rotation, parent));
+        }
+    }
+    private void Awake()
+    {
+        FillPool(400,arrow);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,10 +36,10 @@ public class ArrowManagment : MonoBehaviour
             case "Door":
                 
                 DoorEffect doorEffect = other.gameObject.GetComponent<DoorEffect>();
-                var effecType = doorEffect.selectedEffect;
+                var effectType = doorEffect.selectedEffect;
                 var effectAmount = doorEffect.effectAmount;
                 
-                switch (effecType)
+                switch (effectType)
                 {
                     case DoorEffect.Effect.Addition:
                         AddArrow(effectAmount);
@@ -57,9 +70,8 @@ public class ArrowManagment : MonoBehaviour
     }
     void Sort()
     {
-        float angle = 1f;
-        float arrowCount = arrows.Count;
-        angle = 360 / arrowCount;
+        // ReSharper disable once PossibleLossOfFraction
+        float angle = 360 / arrowCount;
 
         for (int i = 0; i < arrowCount; i++)
         {
@@ -93,15 +105,18 @@ public class ArrowManagment : MonoBehaviour
     void GetRay()
     {
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = Camera.main.transform.position.z;
-        Ray ray = Camera.main.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, layerMask))
+        if (Camera.main != null)
         {
-            Vector3 mouse = hit.point;
-            mouse.x = Math.Clamp(mouse.x, minX, maxX);
-            distance = mouse.x;
-            Sort();
+            mousePos.z = Camera.main.transform.position.z;
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 100, layerMask))
+            {
+                Vector3 mouse = hit.point;
+                mouse.x = Math.Clamp(mouse.x, minX, maxX);
+                distance = mouse.x;
+                Sort();
+            }
         }
     }
     private void Update()

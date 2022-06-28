@@ -3,11 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
-    private void Awake()
-    {
-        SceneManager
-    }
-
     private int currentScene;
     private int sceneToContiniue;
     
