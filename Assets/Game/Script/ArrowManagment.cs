@@ -17,18 +17,21 @@ public class ArrowManagment : MonoBehaviour
     [Range(0, 400)] public int arrowCount;
     private int _maxArrow;
 
-    private void OnValidate()
-    {
-        if (arrowCount > arrows.Count && !isDecrease)
-        {
-            AddArrow();
-        }
-        
-    }
+   
 
-    void AddArrow()
+    void RemoveArrow(int amount)
     {
-        for (int i = arrows.Count; i < arrowCount; i++)
+        for (int i = 0; i <= amount; i++)
+        {
+            GameObject arrow = arrows[arrows.Count - 1];
+            arrows.RemoveAt(arrows.Count-1);
+            arrowPool.Enqueue(arrow);
+        }
+        Sort();
+    }
+    void AddArrow(int amount)
+    {
+        for (int i = 0; i <= amount; i++)
         {
             GameObject arrow = arrowPool.Dequeue();
             arrows.Add(arrow);
