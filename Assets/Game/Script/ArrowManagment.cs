@@ -21,11 +21,21 @@ public class ArrowManagment : MonoBehaviour
     {
         if (arrowCount > arrows.Count && !isDecrease)
         {
-            CreateArrow();
+            AddArrow();
         }
         
     }
 
+    void AddArrow()
+    {
+        for (int i = arrows.Count; i < arrowCount; i++)
+        {
+            GameObject arrow = arrowPool.Dequeue();
+            arrows.Add(arrow);
+            arrow.transform.localPosition = Vector3.zero;
+        }
+        Sort();
+    }
     void GetRay()
     {
         Vector3 mousePos = Input.mousePosition;
