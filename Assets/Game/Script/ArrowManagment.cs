@@ -7,25 +7,41 @@ using UnityEngine;
 public class ArrowManagment : MonoBehaviour
 {
     public List<GameObject> arrows = new List<GameObject>();
-    public Queue<GameObject> arrowPool;
-    
-    public GameObject arrowObject;
-    public Transform parrent;
     public LayerMask layerMask;
     public float minX, maxX;
     public float distance;
+    
+    private Queue<GameObject> _arrowPool;
     [Range(0, 400)] public int arrowCount;
+    
     private int _maxArrow;
+    
+    void MoveObjects(Transform objectTransform, float degree)
+    {
+        Vector3 pos = Vector3.zero;
+        pos.x = Mathf.Cos(degree * Mathf.Deg2Rad);
+        pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
+        objectTransform.localPosition = pos * distance;
+    }
+    void Sort()
+    {
+        float angle = 1f;
+        float arrowCount = arrows.Count;
+        angle = 360 / arrowCount;
 
-   
-
+        for (int i = 0; i < arrowCount; i++)
+        {
+            MoveObjects(arrows[i].transform, i * angle);
+        }
+    }
     void RemoveArrow(int amount)
     {
         for (int i = 0; i <= amount; i++)
         {
+            arrowCount -= amount;
             GameObject arrow = arrows[arrows.Count - 1];
-            arrows.RemoveAt(arrows.Count-1);
-            arrowPool.Enqueue(arrow);
+            arrows.RemoveAt(arrows.Count - 1);
+            _arrowPool.Enqueue(arrow);
         }
         Sort();
     }
@@ -33,7 +49,8 @@ public class ArrowManagment : MonoBehaviour
     {
         for (int i = 0; i <= amount; i++)
         {
-            GameObject arrow = arrowPool.Dequeue();
+            arrowCount += amount;
+            GameObject arrow = _arrowPool.Dequeue();
             arrows.Add(arrow);
             arrow.transform.localPosition = Vector3.zero;
         }
@@ -51,26 +68,6 @@ public class ArrowManagment : MonoBehaviour
             mouse.x = Math.Clamp(mouse.x, minX, maxX);
             distance = mouse.x;
             Sort();
-        }
-    }
-
-    void MoveObjects(Transform objectTransform, float degree)
-    {
-        Vector3 pos = Vector3.zero;
-        pos.x = Mathf.Cos(degree * Mathf.Deg2Rad);
-        pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
-        objectTransform.localPosition = pos * distance;
-    }
-    void Sort()
-    {
-        float angle = 1f;
-        float arrowCount = arrows.Count;
-        angle = 360 / arrowCount;
-
-        for (int i = 0; i < arrowCount; i++)
-        {
-            MoveObjects(arrows[i].transform, i * angle);
-            
         }
     }
     private void Update()
