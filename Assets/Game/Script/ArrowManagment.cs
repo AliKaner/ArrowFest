@@ -21,10 +21,26 @@ public class ArrowManagment : MonoBehaviour
         switch (other.tag)
         {
             case "Door":
-                if (other.gameObject.isRed == true)
+                DoorEffect doorEffect = other.gameObject.GetComponent<DoorEffect>();
+                var effecType = doorEffect.selectedEffect;
+                var effectAmount = doorEffect.effectAmount;
+                switch (effecType)
                 {
-                    TODO
+                    case DoorEffect.Effect.Addition:
+                        AddArrow(effectAmount);
+                        break;
+                    case DoorEffect.Effect.Extraction:
+                        RemoveArrow(effectAmount);
+                        break;
+                    case DoorEffect.Effect.Division:
+                        RemoveArrow(arrowCount-(arrowCount/effectAmount));
+                        break;
+                    case DoorEffect.Effect.Multiplication:
+                        AddArrow(arrowCount*(effectAmount-1));
+                        break;
                 }
+                
+                
                 break;
             case "Enemy":
                 break;

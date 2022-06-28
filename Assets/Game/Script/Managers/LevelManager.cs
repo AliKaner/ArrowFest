@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour
 {
     private void Awake()
     {
-        
+        SceneManager
     }
 
     private int currentScene;
