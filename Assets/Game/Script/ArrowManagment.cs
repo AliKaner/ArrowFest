@@ -15,7 +15,19 @@ public class ArrowManagment : MonoBehaviour
     [Range(0, 400)] public int arrowCount;
     
     private int _maxArrow;
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        switch (other.tag)
+        {
+            case "Door":
+                if(other.gameObject.)
+                break;
+            case "Enemy":
+                break;
+        }
+    }
+
     void MoveObjects(Transform objectTransform, float degree)
     {
         Vector3 pos = Vector3.zero;
@@ -34,7 +46,7 @@ public class ArrowManagment : MonoBehaviour
             MoveObjects(arrows[i].transform, i * angle);
         }
     }
-    void RemoveArrow(int amount)
+    public void RemoveArrow(int amount)
     {
         for (int i = 0; i <= amount; i++)
         {
@@ -45,7 +57,7 @@ public class ArrowManagment : MonoBehaviour
         }
         Sort();
     }
-    void AddArrow(int amount)
+    public void AddArrow(int amount)
     {
         for (int i = 0; i <= amount; i++)
         {
