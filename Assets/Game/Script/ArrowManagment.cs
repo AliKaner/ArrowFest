@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ArrowManagment : MonoBehaviour
@@ -13,9 +14,18 @@ public class ArrowManagment : MonoBehaviour
     public LayerMask layerMask;
     public float minX, maxX;
     public float distance;
-    
+    [Range(0, 400)] public int arrowCount;
     private int _maxArrow;
-    
+
+    private void OnValidate()
+    {
+        if (arrowCount > arrows.Count && !isDecrease)
+        {
+            CreateArrow();
+        }
+        
+    }
+
     void GetRay()
     {
         Vector3 mousePos = Input.mousePosition;
