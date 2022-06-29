@@ -14,6 +14,7 @@ public class MoneyManager : MonoBehaviour
    private void Awake()
    {
       goldPerLevel = 0;
+      moneyUI.RefreshText();
    }
 
    void IncreaseGoldPerLevel(int amount)
