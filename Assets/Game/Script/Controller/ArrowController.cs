@@ -17,7 +17,7 @@ public class ArrowController : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            _moveFactorX = Input.mousePosition.x - _lastFrameFingerPositionX;
+            _moveFactorX = _lastFrameFingerPositionX - Input.mousePosition.x  ;
             _lastFrameFingerPositionX = Input.mousePosition.x;
         }
         else if (Input.GetMouseButtonUp(0))
