@@ -5,9 +5,10 @@ using UnityEngine;
 public class ArrowManagment : MonoBehaviour
 {
     public List<GameObject> arrows = new List<GameObject>();
-    public LayerMask layerMask;
-    public float minX, maxX;
     public float distance;
+    public float rollDistance;
+    public int degreeMultiplier;
+    public Vector3 ;
     private Queue<GameObject> _arrowPool = new Queue<GameObject>();
     public int arrowCount;
     
@@ -68,12 +69,13 @@ public class ArrowManagment : MonoBehaviour
         Vector3 pos = Vector3.zero;
         pos.x = Mathf.Cos(degree * Mathf.Deg2Rad);
         pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
-        objectTransform.localPosition = pos * distance;
+        objectTransform.localPosition = pos * distance + ek;
+        distance += rollDistance;
     }
     void Sort()
     {
         // ReSharper disable once PossibleLossOfFraction
-        float angle = 360 / arrowCount;
+        float angle = 360 / arrowCount*degreeMultiplier;
 
         for (int i = 0; i < arrowCount; i++)
         {

@@ -4785,7 +4785,7 @@ MonoBehaviour:
     m_Bits: 55
   minX: 1
   maxX: 3
-  distance: 1
+  distance: 0.02
   arrowCount: 1
   arrow: {fileID: 9004860235395575696, guid: b3ff0695c3754d544aa419eed5c30414, type: 3}
 --- !u!54 &9004860235396656455
