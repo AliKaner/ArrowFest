@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class ArrowManagment : MonoBehaviour
 {
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private int poolSize;
+    
+    private Queue<GameObject> _arrowPool = new Queue<GameObject>();
+    private int _maxArrow;
+
+    
     public List<GameObject> arrows = new List<GameObject>();
     public float distance;
     public float rollDistance;
     public int degreeMultiplier;
-    public Vector3 ;
-    private Queue<GameObject> _arrowPool = new Queue<GameObject>();
+    public Vector3 offset;
+    public float expantionMultiplier;
     public int arrowCount;
     
-    [SerializeField] private GameObject arrow;
-    
-    private int _maxArrow;
-
     private void FillPool(int amount, GameObject arrow)
     {
         Transform parent = transform;
@@ -67,9 +70,9 @@ public class ArrowManagment : MonoBehaviour
     void MoveObjects(Transform objectTransform, float degree)
     {
         Vector3 pos = Vector3.zero;
-        pos.x = Mathf.Cos(degree * Mathf.Deg2Rad);
+        pos.x = Mathf.Cos(degree * Mathf.Deg2Rad*expantionMultiplier);
         pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
-        objectTransform.localPosition = pos * distance + ek;
+        objectTransform.localPosition = pos * distance + offset;
         distance += rollDistance;
     }
     void Sort()
@@ -112,7 +115,7 @@ public class ArrowManagment : MonoBehaviour
 
     private void Awake()
     {
-        FillPool(400,arrow);
+        FillPool(poolSize,arrow);
     }
     private void Start()
     {
