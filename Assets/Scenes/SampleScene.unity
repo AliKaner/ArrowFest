@@ -641,6 +641,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400044, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
   m_PrefabInstance: {fileID: 2068346289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &269776369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9004860235395575696, guid: b3ff0695c3754d544aa419eed5c30414, type: 3}
+  m_PrefabInstance: {fileID: 1082068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &326668103 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400044, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
@@ -2652,6 +2657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee8ad41519f46f40b4eb6410c6b8a7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isStarted: 0
+  speed: 0
 --- !u!114 &1684803294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2665,24 +2672,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrows:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  arrowObject: {fileID: 0}
-  parrent: {fileID: 0}
-  minX: 0.2
-  maxX: 2
+  - {fileID: 269776369}
   layerMask:
     serializedVersion: 2
     m_Bits: 55
+  minX: 0.2
+  maxX: 2
   distance: 2
+  arrowCount: 400
+  arrow: {fileID: 9004860235395575696, guid: b3ff0695c3754d544aa419eed5c30414, type: 3}
 --- !u!1 &1703188357 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: fa7f36c71b9e8fa4798df3a931c2fd92, type: 3}
