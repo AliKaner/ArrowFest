@@ -15,7 +15,7 @@ public class ArrowManagment : MonoBehaviour
     
     private int _maxArrow;
 
-    void FillPool(int amount, GameObject arrow)
+    private void FillPool(int amount, GameObject arrow)
     {
         Transform parent = transform;
 
@@ -31,11 +31,13 @@ public class ArrowManagment : MonoBehaviour
         switch (other.tag)
         {
             case "Door":
-                
-                DoorEffect doorEffect = other.gameObject.GetComponent<DoorEffect>();
+                var doorEffect = other.gameObject.GetComponent<DoorEffect>();
                 var effectType = doorEffect.selectedEffect;
                 var effectAmount = doorEffect.effectAmount;
                 
+                Debug.Log(effectAmount + " " + effectType);
+                if(doorEffect.isUsed == false)
+                {
                 switch (effectType)
                 {
                     case DoorEffect.Effect.Addition:
@@ -50,7 +52,11 @@ public class ArrowManagment : MonoBehaviour
                     case DoorEffect.Effect.Multiplication:
                         AddArrow(arrowCount*(effectAmount-1));
                         break;
+                    default:
+                        break;
                 }
+                }
+                doorEffect.isUsed = true;
                 break;
             case "Enemy":
                 break;

@@ -17,6 +17,7 @@ public class DoorEffect : MonoBehaviour
     public int effectAmount;
     [SerializeField] private TextMeshProUGUI text;
     public Material[] materials;
+    public bool isUsed = false;
     private void SetStats(Effect effect)
     {
         switch (effect)
