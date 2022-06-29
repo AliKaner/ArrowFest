@@ -8,25 +8,22 @@ public class ArrowManagment : MonoBehaviour
     public LayerMask layerMask;
     public float minX, maxX;
     public float distance;
-    private Queue<GameObject> _arrowPool;
+    private Queue<GameObject> _arrowPool = new Queue<GameObject>();
     public int arrowCount;
     
     [SerializeField] private GameObject arrow;
     
     private int _maxArrow;
 
-    void FillPool(int amount, GameObject _arrow)
+    void FillPool(int amount, GameObject arrow)
     {
         Transform parent = transform;
 
         for (int i = 0; i < amount; i++)
         {
-            _arrowPool.Enqueue(Instantiate(_arrow, parent.position, parent.rotation, parent));
+            //GameObject instantiate = Instantiate(arrow, parent.position, parent.rotation, parent);
+            _arrowPool.Enqueue(Instantiate(arrow, parent.position, parent.rotation, parent));
         }
-    }
-    private void Awake()
-    {
-        FillPool(400,arrow);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,7 +53,6 @@ public class ArrowManagment : MonoBehaviour
                 }
                 break;
             case "Enemy":
-                
                 break;
         }
     }
@@ -82,9 +78,9 @@ public class ArrowManagment : MonoBehaviour
     {
         for (int i = 0; i <= amount; i++)
         {
-            arrowCount -= amount;
-            GameObject arrow = arrows[arrows.Count - 1];
-            arrows.RemoveAt(arrows.Count - 1);
+            arrowCount--;
+            GameObject arrow = arrows[arrowCount];
+            arrows.RemoveAt(arrowCount);
             _arrowPool.Enqueue(arrow);
             arrow.transform.parent = null;
         }
@@ -94,7 +90,7 @@ public class ArrowManagment : MonoBehaviour
     {
         for (int i = 0; i <= amount; i++)
         {
-            arrowCount += amount;
+            arrowCount++;
             GameObject arrow = _arrowPool.Dequeue();
             arrow.transform.parent = gameObject.transform;
             arrows.Add(arrow);
@@ -118,6 +114,15 @@ public class ArrowManagment : MonoBehaviour
                 Sort();
             }
         }
+    }
+
+    private void Awake()
+    {
+        FillPool(400,arrow);
+    }
+    private void Start()
+    {
+        
     }
     private void Update()
     {
