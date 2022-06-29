@@ -6,10 +6,26 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-   public static MoneyManager Instance;
+   private static MoneyManager _instance = null;
+
+   public static MoneyManager Instance
+   {
+      get
+      {
+         if (_instance == null)
+         {
+            _instance = new GameObject("MoneyManager").AddComponent<MoneyManager>();
+         }
+
+         return _instance;
+      }
+   }
+   
 
    [SerializeField] private MoneyUI moneyUI;
    public int goldPerLevel;
+   
+   
 
    private void Awake()
    {

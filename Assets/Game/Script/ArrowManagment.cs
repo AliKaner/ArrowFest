@@ -63,8 +63,7 @@ public class ArrowManagment : MonoBehaviour
                 doorEffect.isUsed = true;
                 break;
             case "Enemy":
-                var enemy = other.GetComponent<Enemy>();
-                enemy.Death();
+                other.GetComponent<Enemy>().Death();
                 RemoveArrow(1);
                 Debug.Log("eNEMYE ÇARI");
                 break;

@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-  [SerializeField] private Animation anim;
+  [SerializeField] private Animator anim;
   [SerializeField] private int gold;
   [SerializeField] private GameObject arrow;
-  
+  private static readonly int death = Animator.StringToHash("Death");
+
+  private void Awake()
+  {
+    anim = GetComponent<Animator>();
+  }
 
   public void Death()
   {
     MoneyManager.Instance.goldPerLevel += gold;
     MoneyManager.Instance.GainPoint(gold);
     arrow.SetActive(true);
-    anim.Play();
+    anim.SetBool(death,true);
     
   }
 }
