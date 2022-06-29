@@ -47,7 +47,7 @@ public class ArrowManagment : MonoBehaviour
                         RemoveArrow(effectAmount);
                         break;
                     case DoorEffect.Effect.Division:
-                        RemoveArrow(arrowCount-(arrowCount/effectAmount));
+                        RemoveArrow(arrowCount-Mathf.FloorToInt(arrowCount/effectAmount));
                         break;
                     case DoorEffect.Effect.Multiplication:
                         AddArrow(arrowCount*(effectAmount-1));
@@ -87,6 +87,7 @@ public class ArrowManagment : MonoBehaviour
             arrowCount--;
             GameObject arrow = arrows[arrowCount];
             arrows.RemoveAt(arrowCount);
+            arrow.SetActive(false);
             _arrowPool.Enqueue(arrow);
             arrow.transform.parent = null;
         }
@@ -98,29 +99,14 @@ public class ArrowManagment : MonoBehaviour
         {
             arrowCount++;
             GameObject arrow = _arrowPool.Dequeue();
+            arrow.SetActive(true);
             arrow.transform.parent = gameObject.transform;
             arrows.Add(arrow);
             arrow.transform.localPosition = Vector3.zero;
         }
         Sort();
     }
-    void GetRay()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        if (Camera.main != null)
-        {
-            mousePos.z = Camera.main.transform.position.z;
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100, layerMask))
-            {
-                Vector3 mouse = hit.point;
-                mouse.x = Math.Clamp(mouse.x, minX, maxX);
-                distance = mouse.x;
-                Sort();
-            }
-        }
-    }
+   
 
     private void Awake()
     {
@@ -132,10 +118,7 @@ public class ArrowManagment : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
-        {
-            GetRay();
-        }
+      
     }
 }
 
