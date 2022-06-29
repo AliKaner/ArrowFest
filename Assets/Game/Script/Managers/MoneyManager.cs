@@ -7,8 +7,8 @@ using UnityEngine;
 public class MoneyManager : MonoBehaviour
 {
    public static MoneyManager Instance;
-   
-   public TextMeshProUGUI text;
+
+   [SerializeField] private MoneyUI moneyUI;
    public int goldPerLevel;
 
    private void Awake()
@@ -24,18 +24,12 @@ public class MoneyManager : MonoBehaviour
    public void GainPoint(int point)
    {
       PlayerPrefs.SetInt("Point",PlayerPrefs.GetInt("Point")+point);
-      RefreshText();
+      moneyUI.RefreshText();
    }
 
    public void AddGain()
    {
       PlayerPrefs.SetInt("Point",PlayerPrefs.GetInt("Point")+goldPerLevel);
-      RefreshText();
+      moneyUI.RefreshText();
    }
-
-   public void RefreshText()
-   {
-      text.text = PlayerPrefs.GetInt("Point").ToString();
-   }
-   
 }

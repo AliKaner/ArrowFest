@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Money : MonoBehaviour
+public class MoneyUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Image coinImage;
+    [SerializeField] private TextMeshProUGUI text;
+    
+    public void RefreshText()
     {
+        text.text = PlayerPrefs.GetInt("Point").ToString();
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
+    
+    
 }
