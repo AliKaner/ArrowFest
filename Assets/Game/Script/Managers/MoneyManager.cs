@@ -6,32 +6,31 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-   private static MoneyManager _instance = null;
+   public static MoneyManager Instance;
+   public float Money;
 
-   public static MoneyManager Instance
+   private void Awake()
    {
-      get
-      {
-         if (_instance == null)
-         {
-            _instance = new GameObject("MoneyManager").AddComponent<MoneyManager>();
-         }
-
-         return _instance;
-      }
+      PlayerPrefs.DeleteAll();
    }
-   
+   void Start()
+   {
+      if (PlayerPrefs.GetFloat("firstgame") == 0)
+      {
+         Money = PlayerPrefs.GetFloat("money", 0);
+         PlayerPrefs.SetFloat("firstgame", 1);
+      }
+      else
+      {
+         Money = PlayerPrefs.GetFloat("money", 0);
+      }
+      Instance = this;
+      moneyUI.RefreshText();
+   }
 
    [SerializeField] private MoneyUI moneyUI;
    public int goldPerLevel;
    
-   
-
-   private void Awake()
-   {
-      goldPerLevel = 0;
-      moneyUI.RefreshText();
-   }
 
    void IncreaseGoldPerLevel(int amount)
    {

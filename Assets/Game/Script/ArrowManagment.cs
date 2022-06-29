@@ -63,9 +63,12 @@ public class ArrowManagment : MonoBehaviour
                 doorEffect.isUsed = true;
                 break;
             case "Enemy":
-                other.GetComponent<Enemy>().Death();
-                RemoveArrow(1);
-                Debug.Log("eNEMYE ÇARI");
+                if (other.GetComponent<Enemy>().isDead == false)
+                {
+                    other.GetComponent<Enemy>().Death();
+                    RemoveArrow(1);
+                    Debug.Log("eNEMYE ÇARI");
+                }
                 break;
         }
     }
@@ -76,7 +79,6 @@ public class ArrowManagment : MonoBehaviour
         pos.x = Mathf.Cos(degree * Mathf.Deg2Rad*expantionMultiplier);
         pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
         objectTransform.localPosition = pos * distance + offset;
-        distance += rollDistance;
     }
     void Sort()
     {
@@ -111,6 +113,7 @@ public class ArrowManagment : MonoBehaviour
             arrow.transform.parent = gameObject.transform;
             arrows.Add(arrow);
             arrow.transform.localPosition = Vector3.zero;
+            distance += rollDistance;
         }
         Sort();
     }

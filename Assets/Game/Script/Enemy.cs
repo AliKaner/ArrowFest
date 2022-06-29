@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+  public bool isDead = false;
   [SerializeField] private Animator anim;
   [SerializeField] private int gold;
   [SerializeField] private GameObject arrow;
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour
 
   public void Death()
   {
+    isDead = true;
     MoneyManager.Instance.goldPerLevel += gold;
     MoneyManager.Instance.GainPoint(gold);
     arrow.SetActive(true);
