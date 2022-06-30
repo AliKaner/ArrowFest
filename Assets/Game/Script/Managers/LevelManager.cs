@@ -1,11 +1,28 @@
 using System;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI text;
     private int currentScene;
     private int sceneToContiniue;
-    
+
+    private void Start()
+    {
+        Time.timeScale= 0;
+    }
+
+    private void Update()
+    {
+        if (Input.anyKey)
+        {
+            text.GameObject().SetActive(false);
+            Time.timeScale = 1;
+        }
+    }
+
     public void LoadMenu()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
