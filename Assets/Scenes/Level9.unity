@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 12
+  effectAmount: 11
   text: {fileID: 1493380324}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -1579,7 +1579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 10
+  effectAmount: 22
   text: {fileID: 220068978}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -2476,7 +2476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 30
+  effectAmount: 22
   text: {fileID: 1494891380}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 20
+  effectAmount: 22
   text: {fileID: 1815748115}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -3631,7 +3631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 20
+  effectAmount: 11
   text: {fileID: 1170345683}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -3896,8 +3896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d13764671dd224eba0b9ca7eda896d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEffect: 0
-  effectAmount: 70
+  selectedEffect: 1
+  effectAmount: 11
   text: {fileID: 1029055284}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -4828,8 +4828,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d13764671dd224eba0b9ca7eda896d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEffect: 2
-  effectAmount: 20
+  selectedEffect: 0
+  effectAmount: 11
   text: {fileID: 634915838}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -5780,7 +5780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 40
+  effectAmount: 22
   text: {fileID: 1335811159}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -6483,7 +6483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 20
+  effectAmount: 11
   text: {fileID: 1038448429}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -7323,7 +7323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 25
+  effectAmount: 22
   text: {fileID: 1567321018}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -7949,7 +7949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 10
+  effectAmount: 22
   text: {fileID: 456690056}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -8166,7 +8166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 15
+  effectAmount: 11
   text: {fileID: 1854685377}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}

@@ -612,7 +612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 12
+  effectAmount: 10
   text: {fileID: 1977134010}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 10
+  effectAmount: 4
   text: {fileID: 1018810912}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -2753,7 +2753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 30
+  effectAmount: 4
   text: {fileID: 190265575}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -2970,7 +2970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 20
+  effectAmount: 5
   text: {fileID: 210318060}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -3550,7 +3550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 1
-  effectAmount: 10
+  effectAmount: 5
   text: {fileID: 43388054}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -3718,8 +3718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d13764671dd224eba0b9ca7eda896d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEffect: 0
-  effectAmount: 70
+  selectedEffect: 1
+  effectAmount: 10
   text: {fileID: 1681748972}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -7138,7 +7138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedEffect: 0
-  effectAmount: 40
+  effectAmount: 21
   text: {fileID: 1599191564}
   materials:
   - {fileID: 2100000, guid: 2156bd737202c824793742b8930f3651, type: 2}
@@ -7377,7 +7377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d13764671dd224eba0b9ca7eda896d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEffect: 2
+  selectedEffect: 0
   effectAmount: 20
   text: {fileID: 1866247617}
   materials:
