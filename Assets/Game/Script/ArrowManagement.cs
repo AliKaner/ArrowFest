@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -104,13 +103,12 @@ public class ArrowManagement : MonoBehaviour
 
     void MoveObjects(Transform objectTransform, float degree)
     {
-        distance = _distanceHolder + rollDistance*arrowCount;
-        
         Vector3 pos = Vector3.zero;
         pos.x = Mathf.Cos(degree * Mathf.Deg2Rad)*_expansionMultiplier;
         pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
         objectTransform.localPosition = pos * distance ;
-        
+        distance += rollDistance;
+
     }
     void Sort()
     {
@@ -125,7 +123,7 @@ public class ArrowManagement : MonoBehaviour
     private void Awake()
     {
         FillPool(poolSize,arrow);
-        _distanceHolder = distance;
+        //_distanceHolder = distance;
     }
 }
 
