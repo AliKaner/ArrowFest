@@ -27,7 +27,7 @@ public class DoorEffect : MonoBehaviour
                 _sign = "+";
                 break;
             case Effect.Extraction:
-                gameObject.GetComponent<MeshRenderer>().material = materials[0];
+                gameObject.GetComponent<MeshRenderer>().material = materials[1];
                 _sign = "-";
                 break;
             case Effect.Division:
@@ -35,7 +35,7 @@ public class DoorEffect : MonoBehaviour
                 _sign = "÷";
                 break;
             case Effect.Multiplication:
-                gameObject.GetComponent<MeshRenderer>().material = materials[1];
+                gameObject.GetComponent<MeshRenderer>().material = materials[0];
                 _sign = "x";
                 break;
         }
