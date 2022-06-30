@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ArrowManagement : MonoBehaviour
@@ -14,7 +15,7 @@ public class ArrowManagement : MonoBehaviour
     public float distance;
     public float rollDistance;
     public int degreeMultiplier;
-    private float _expansionMultiplier;
+    private float _expansionMultiplier = 1;
     public int arrowCount;
     
     private void FillPool(int amount, GameObject arrow)
@@ -29,6 +30,7 @@ public class ArrowManagement : MonoBehaviour
     private void Finish()
     {
         _expansionMultiplier = 5;
+        Sort();
     }
 
     private void RemoveArrow(int amount)
@@ -78,7 +80,6 @@ public class ArrowManagement : MonoBehaviour
                             RemoveArrow(effectAmount);
                             break;
                         case DoorEffect.Effect.Division:
-                            // ReSharper disable once PossibleLossOfFraction
                             RemoveArrow(arrowCount-Mathf.FloorToInt(arrowCount/effectAmount));
                             break;
                         case DoorEffect.Effect.Multiplication:
@@ -92,7 +93,7 @@ public class ArrowManagement : MonoBehaviour
                 if (other.GetComponent<Enemy>().isDead == false)
                 {
                     other.GetComponent<Enemy>().Death();
-                RemoveArrow(1);
+                    RemoveArrow(1);
                 }
                 break;
             case "Finish":
@@ -106,13 +107,15 @@ public class ArrowManagement : MonoBehaviour
         Vector3 pos = Vector3.zero;
         pos.x = Mathf.Cos(degree * Mathf.Deg2Rad)*_expansionMultiplier;
         pos.y = Mathf.Sin(degree * Mathf.Deg2Rad);
-        objectTransform.localPosition = pos * distance ;
+        pos = pos * distance;
+        //objectTransform.localPosition = Vector3.Lerp(objectTransform.localPosition,pos,0.4f);  TODO: belki lerp eklersem daha canlı durur
+        objectTransform.localPosition = pos;
         distance += rollDistance;
 
     }
     void Sort()
     {
-        // ReSharper disable once PossibleLossOfFraction
+        distance = _distanceHolder;
         float angle = 360 / arrowCount*degreeMultiplier;
 
         for (int i = 0; i < arrowCount; i++)
@@ -123,7 +126,7 @@ public class ArrowManagement : MonoBehaviour
     private void Awake()
     {
         FillPool(poolSize,arrow);
-        //_distanceHolder = distance;
-    }
+        _distanceHolder = distance;
+    } 
 }
 
