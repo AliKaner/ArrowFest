@@ -7,15 +7,17 @@ public class ArrowManagement : MonoBehaviour
     [SerializeField] private GameObject arrow;
     [SerializeField] private int poolSize;
     [SerializeField] private GameObject winUI;
+    [SerializeField] private GameObject loseUI;
+    
     private readonly Queue<GameObject> _arrowPool = new Queue<GameObject>();
     private int _maxArrow;
     private float _distanceHolder;
+    private float _expansionMultiplier = 1;
     
     public List<GameObject> arrows = new List<GameObject>();
     public float distance;
     public float rollDistance;
     public int degreeMultiplier;
-    private float _expansionMultiplier = 1;
     public int arrowCount;
     
     private void FillPool(int amount, GameObject arrow)
@@ -38,6 +40,11 @@ public class ArrowManagement : MonoBehaviour
         for (int i = 0; i <= amount; i++)
         {
             arrowCount--;
+            if (arrowCount == 0)
+            {
+                Time.timeScale = 0;
+                loseUI.SetActive(true);
+            }
             GameObject arrow = arrows[arrowCount];
             arrows.RemoveAt(arrowCount);
             arrow.SetActive(false);
@@ -103,6 +110,11 @@ public class ArrowManagement : MonoBehaviour
                 if (arrowCount > 10)
                 {
                     winUI.SetActive(true);
+                }
+                else
+                {
+                    Time.timeScale = 0;
+                    loseUI.SetActive(true);
                 }
                 break;
         }

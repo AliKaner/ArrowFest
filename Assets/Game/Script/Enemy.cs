@@ -23,6 +23,5 @@ public class Enemy : MonoBehaviour
     MoneyManager.Instance.GainPoint(gold);
     arrow.SetActive(true);
     anim.SetBool(death,true);
-    
   }
 }

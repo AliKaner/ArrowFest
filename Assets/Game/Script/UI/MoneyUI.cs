@@ -14,8 +14,4 @@ public class MoneyUI : MonoBehaviour
         text.text = PlayerPrefs.GetInt("Point").ToString();
         
     }
-    
-    
-    
-    
 }

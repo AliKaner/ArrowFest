@@ -21,6 +21,4 @@ public class RandomColor : MonoBehaviour
    {
      SetColor(Enemys);
    }
-   
-   
 }

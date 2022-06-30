@@ -24,6 +24,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene( PlayerPrefs.GetInt("SavedScene"));
     }
 
+    public void Retry()
+    {
+        SceneManager.LoadScene( PlayerPrefs.GetInt("SavedScene"));
+    }
+
     public void Exit()
     {
         Application.Quit(); 
