@@ -9,11 +9,6 @@ public class LevelManager : MonoBehaviour
     private int currentScene;
     private int sceneToContiniue;
 
-    private void Start()
-    {
-        Time.timeScale= 0;
-    }
-
     private void Update()
     {
         if (Input.anyKey)
@@ -23,29 +18,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void LoadMenu()
-    {
-        currentScene = SceneManager.GetActiveScene().buildIndex;
-        PlayerPrefs.SetInt("SaveScene",currentScene);
-        SceneManager.LoadScene(0);
-    }
-
-    public void StartGame()
-    {
-        PlayerPrefs.SetInt("SaveScene",1);
-        SceneManager.LoadScene(1);
-    }
-
-    public void Continue()
-    {
-        sceneToContiniue = PlayerPrefs.GetInt("SaveScene");
-        if (sceneToContiniue != 0)
-            SceneManager.LoadScene(sceneToContiniue);
-    }
     public void NextLevel()
     {
-        PlayerPrefs.SetInt("SaveScene",PlayerPrefs.GetInt("SaveScene")+1);
-        SceneManager.LoadScene(PlayerPrefs.GetInt("SaveScene"));
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex+1);
+        SceneManager.LoadScene( PlayerPrefs.GetInt("SavedScene"));
     }
 
     public void Exit()

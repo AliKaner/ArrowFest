@@ -8,11 +8,6 @@ public class MoneyManager : MonoBehaviour
 {
    public static MoneyManager Instance;
    public float Money;
-
-   private void Awake()
-   {
-      PlayerPrefs.DeleteAll();
-   }
    void Start()
    {
       if (PlayerPrefs.GetFloat("firstgame") == 0)

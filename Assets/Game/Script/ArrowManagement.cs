@@ -6,7 +6,7 @@ public class ArrowManagement : MonoBehaviour
 {
     [SerializeField] private GameObject arrow;
     [SerializeField] private int poolSize;
-    
+    [SerializeField] private GameObject winUI;
     private readonly Queue<GameObject> _arrowPool = new Queue<GameObject>();
     private int _maxArrow;
     private float _distanceHolder;
@@ -99,6 +99,12 @@ public class ArrowManagement : MonoBehaviour
             case "Finish":
                 Finish();
                 break;
+            case "FinishCheck":
+                if (arrowCount > 10)
+                {
+                    winUI.SetActive(true);
+                }
+                break;
         }
     }
 
@@ -110,7 +116,7 @@ public class ArrowManagement : MonoBehaviour
         pos = pos * distance;
         //objectTransform.localPosition = Vector3.Lerp(objectTransform.localPosition,pos,0.4f);  TODO: belki lerp eklersem daha canlı durur
         objectTransform.localPosition = pos;
-        distance += rollDistance;
+        distance += rollDistance; // For roll shape
 
     }
     void Sort()
@@ -125,7 +131,7 @@ public class ArrowManagement : MonoBehaviour
     }
     private void Awake()
     {
-        FillPool(poolSize,arrow);
+        FillPool(poolSize,arrow); 
         _distanceHolder = distance;
     } 
 }
